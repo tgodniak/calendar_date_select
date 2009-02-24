@@ -198,10 +198,16 @@ module CalendarDateSelect::FormHelpers
         out << javascript_tag("new CalendarDateSelect( $('#{uniq_id}').previous(), #{options_for_javascript(javascript_options)} ); ")
       else
         out << " "
-        out << image_tag(image,
-            :onclick => "new CalendarDateSelect( $(this).previous(), #{options_for_javascript(javascript_options)} );",
-            :style => 'border:0px; cursor:pointer;',
-			:class=>'calendar_date_select_popup_icon')
+        if options[:show_image]
+          out << image_tag(image,
+                           :onclick => "new CalendarDateSelect( $(this).previous(), #{options_for_javascript(javascript_options)} );",
+                           :style => 'border:0px; cursor:pointer;',
+                           :class =>'calendar-date-select-popup-icon')
+        else
+          out << link_to_function(options[:text],
+                                  "new CalendarDateSelect( $(this).previous(), #{options_for_javascript(javascript_options)} );",
+                                  :class =>'calendar-date-select-popup-link')
+        end
       end
       out
     end

@@ -57,7 +57,11 @@ module CalendarDateSelect
   #     :image => "custom_calendar_picker.png"
   #   )
   def self.default_options
-    @default_options ||= { :image => "calendar_date_select/calendar.gif" }
+    @default_options ||= {
+      :image => "calendar_date_select/calendar.gif",
+      :show_image => true,
+      :text => '&nbsp;'
+    }
   end
 
   # Set the picker image.  Provide the image url the same way you would provide it to image_tag
